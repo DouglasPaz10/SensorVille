@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Principal - Gerenciamento de Animais</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ESTILOS */
+        body {
+            font-family: 'Inter', sans-serif; /* Usando a fonte Inter */
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden; /* Evita rolagem horizontal */
+        }
+
+        .app-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            box-sizing: border-box;
+            position: relative; /* Para posicionar as telas */
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        /* Estilos da Tela Principal (Dashboard) */
+        .main-screen {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Layout responsivo com grid */
+            gap: 25px;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .card {
+            background-color: #e8f0fe; /* Azul claro */
+            border-radius: 15px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer; /* Adicionado de volta para indicar que é clicável */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 150px;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02); /* Efeito de hover mais pronunciado */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            background-color: #dbe7ff; /* Azul mais claro no hover */
+        }
+
+        /* Estilo para o link dentro do card */
+        .card a {
+            text-decoration: none; /* Remove o sublinhado padrão do link */
+            color: inherit; /* Herda a cor do texto do elemento pai (card-title) */
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%; /* Ocupa toda a largura do card */
+            height: 100%; /* Ocupa toda a altura do card */
+        }
+
+        .card-icon {
+            font-size: 3.5em;
+            color: #007bff; /* Azul vibrante */
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            color: #0056b3; /* Azul mais escuro no hover do ícone */
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        /* Estilos das Telas de Conteúdo (escondidas por padrão) */
+        /* Estas seções ainda existem, mas não são navegadas pelos cards */
+        .content-screen {
+            background-color: #fdfdfd;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+            text-align: left;
+            display: none; /* Escondido por padrão */
+            animation: fadeIn 0.5s ease-out; /* Animação de entrada */
+        }
+
+        .content-screen h2 {
+            color: #007bff;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            .card {
+                padding: 25px 15px;
+                min-height: 120px;
+            }
+            .card-icon {
+                font-size: 3em;
+            }
+            .card-title {
+                font-size: 1.1em;
+            }
+            .content-screen {
+                padding: 20px;
+            }
+            .content-screen h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 25px;
+            }
+            .main-screen {
+                grid-template-columns: 1fr; 
+            }
+            .card {
+                padding: 20px 10px;
+                min-height: 100px;
+            }
+            .card-icon {
+                font-size: 2.5em;
+            }
+            .card-title {
+                font-size: 1em;
+            }
+            .content-screen h2 {
+                font-size: 1.5em;
+            }
+            .back-button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Tela Principal (Dashboard) -->
+        <section id="mainScreen" class="active-screen">
+            <h1>Bem-vindo ao Gerenciamento de Animais</h1>
+            <div class="main-screen">
+                <div class="card">
+                    <a href="{{url_for('registro')}}" aria-label="Cadastrar Novo Animal">
+                        <i class="fas fa-paw card-icon"></i>
+                        <div class="card-title">Cadastrar Novo Animal</div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="{{url_for('animais_cadastrados')}}" aria-label="Animais Cadastrados">
+                        <i class="fas fa-list-alt card-icon"></i>
+                        <div class="card-title">Animais Cadastrados</div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="{{url_for('howtouse')}}" aria-label="Como Usar o Site">
+                        <i class="fas fa-question-circle card-icon"></i>
+                        <div class="card-title">Como Usar o Site</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+</body>
+</html>
+

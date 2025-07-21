@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animais Cadastrados</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+  
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+  
+    .cards-container {
+    display: grid;
+    background-color: aliceblue;
+    border-radius: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+  
+    .card {
+      max-width: 300px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  
+    .card-content {
+      padding: 15px;
+    }
+  
+    .card-content h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #333;
+    }
+  
+    .card-content p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Animais Cadastrados</h1>
+  
+  <div id="cardsContainer" class="cards-container">
+    <!-- Os cards serão inseridos via JavaScript -->
+  </div>
+
+  <script>
+    const APPS_URL = "https://script.google.com/macros/s/AKfycbzZdzwbKLwtWKJ4_oszP-5-m-q15FY-ceVGg-xHgjm2AiGC7FrKodXG1Y0KuOsuXjHG/exec"; 
+
+
+      //nao esta performando muito bem
+    async function carregarDados() {
+      try {
+        const response = await fetch(APPS_URL);
+        const dados = await response.json();
+        montarCards(dados);
+      } catch (error) {
+        console.error("Erro ao carregar os dados:", error);
+      }
+    }
+      //escreve os cards
+      function montarCards(lista) {
+  const container = document.getElementById("cardsContainer");
+  container.innerHTML = "";
+
+  lista.forEach(item => {
+    // Se não houver foto, usa uma imagem padrão de usuário
+    const imgUrl = item['Foto'] && item['Foto'].trim() !== ""
+      ? item['Foto']
+      : "https://cdn-icons-png.flaticon.com/128/5413/5413839.png"; // Imagem padrão
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+      <img src="${imgUrl}" alt="Foto de ${item['Nome Pet']}" class="card-img">
+      <div class="card-content">
+        <h2>${item['Nome Pet']}</h2>
+        <p><strong>Espécie:</strong> ${item['Espécie']}</p>
+        <p><strong>Raça:</strong> ${item['Raça']}</p>
+        <p><strong>Dono:</strong> ${item['Nome Dono']}</p>
+        <p><strong>Contato:</strong> ${item['Telefone']}</p>
+        <p><strong>Email:</strong> ${item['Email']}</p>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+
+    function driveToDirectUrl(url) {
+      if (!url) return "";
+      const m = url.match(/[-\w]{25,}/);
+      return m ? `https://drive.google.com/uc?export=view&id=${m[0]}` : url;
+    }
+
+    carregarDados();
+  </script>
+</body>
+</html>

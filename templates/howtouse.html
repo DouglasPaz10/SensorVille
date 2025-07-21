@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentação do Formulário</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #2b2b2b;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #d6336c;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    .highlight {
+      background: #e9ffe9;
+      padding: 10px;
+      border-left: 5px solid #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    #readme{
+        background-color: #df474779;
+        border-left:5px solid #df4747bd ;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Documentação do Formulário de Cadastro de Animal</h1>
+    <p>
+      Este formulário é utilizado para cadastrar animais de estimação e os dados de seus donos. 
+      Os dados preenchidos são enviados para o sistema, onde serão armazenados na <a href="https://docs.google.com/spreadsheets/d/1PumUJUsa2waMPQ0sPsc3iP1ITgR5Fv4dnXbxcbF87u4/edit?gid=0#gid=0">planilha do Google Sheets</a>.
+    </p>
+
+    <h2>Campos do Formulário</h2>
+    <ul>
+      <li><strong>Nome do Pet:</strong> Informe o nome do animal de estimação (campo obrigatório).</li>
+      <li><strong>Espécie:</strong> Escolha a espécie do pet, como "Cachorro", "Gato" ou outra (campo obrigatório).</li>
+      <li><strong>Raça (se aplicável):</strong> Descreva a raça do pet (opcional).</li>
+      <li><strong>Foto do Pet:</strong> Permite anexar uma foto do animal. Aceita apenas arquivos de imagem (JPEG, PNG).</li>
+      <li><strong>Nome Completo do Dono:</strong> Digite o nome completo do proprietário do animal (campo obrigatório).</li>
+      <li><strong>Contato do Dono (Telefone):</strong> Informe um telefone para contato, no formato (XX) XXXXX-XXXX.</li>
+      <li><strong>Email do Dono:</strong> Endereço de e-mail válido do dono (campo obrigatório).</li>
+    </ul>
+
+    <h2>Como Preencher</h2>
+    <ol>
+      <li>Preencha o nome do pet no primeiro campo.</li>
+      <li>Selecione a espécie no menu suspenso.</li>
+      <li>Informe a raça do animal, se aplicável.</li>
+      <li>Anexe uma foto do pet clicando em <code>Escolher arquivo</code>.</li>
+      <li>Digite o nome completo do dono, telefone e e-mail.</li>
+      <li>Ao finalizar, clique no botão <strong>“Enviar Informações”</strong>.</li>
+    </ol>
+
+    <div class="highlight">
+      <strong>Dica:</strong> Os dados são validados no front.Portanto, usando ferramentas como insomnia ou postmans não são validados.
+    </div>
+
+    <h2>Validação</h2>
+    <p>
+      O formulário valida automaticamente:
+      <ul>
+        <li>Campos obrigatórios: Nome do pet, Espécie, Nome do dono, Telefone e E-mail.</li>
+        <li>Formato do e-mail: Deve seguir o padrão <code>usuario@dominio.com</code>.</li>
+        <li>Telefone: Deve conter apenas números, e seguir o padrão de numeros esperado.</li>
+      </ul>
+    </p>
+
+    <h2>Fluxo de Envio</h2>
+    <p>
+      Ao enviar, os dados são processados e enviados para o servidor (Google Apps Script ou backend) que grava os dados na planilha junto com o link da foto.
+    </p>
+
+    <h3>Botão “Voltar”</h3>
+    <p>O link <code>voltar</code> no final da página permite retornar à tela anterior sem enviar o formulário.</p>
+
+    <div class='highlight' id="readme">
+        Para mais informações consulte o read.me do Github.
+        
+      </div>
+  </div>
+
+ 
+</body>
+</html>
