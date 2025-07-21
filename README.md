@@ -34,7 +34,7 @@ Como o projeto não exigia uma camada de segurança robusta, **optei por realiza
 
 ### **Google Apps Script**
 
-O **Google Apps Script** foi escolhido como estratégia para desenvolver um código mais escalável, sem necessidade de autenticações complexas, além de oferecer **integração nativa com o Google Drive**, ferramenta utilizada para armazenar as imagens dos pets cadastrados.
+O **Google Apps Script** foi escolhido como estratégia para desenvolver um código mais escalável, sem necessidade de autenticações complexas, além de oferecer **integração nativa com o Google Drive e Sheets**, ferramenta utilizada para armazenar as imagens dos pets cadastrados.
 
 O Apps Script foi responsável por:  
 - Manter a planilha atualizada com os dados enviados pelo formulário.  
