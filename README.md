@@ -65,6 +65,11 @@ O front-end deste projeto foi desenvolvido **100% com HTML, CSS e JavaScript pur
 
 ---
 
+links úteis:
+-*PLANILHA* ---> `https://docs.google.com/spreadsheets/d/1PumUJUsa2waMPQ0sPsc3iP1ITgR5Fv4dnXbxcbF87u4/edit?gid=0#gid=0`
+-*PASTA DO DRIVE* ---> `https://drive.google.com/drive/folders/1H6PbE5gw-9c96_v8FuHy9omMZq0m7xfq?hl=pt-br`
+
+Qualquer dúvida fico à disposição ;)
 
 
 
