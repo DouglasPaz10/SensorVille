@@ -26,7 +26,7 @@ As demais tecnologias utilizadas, como o **Google Apps Script**, não necessitam
 
 O back-end é composto principalmente por uma aplicação **Flask**, com dois arquivos principais:  
 - **`model.py`**: Responsável por enviar uma requisição de método post para a aplicação AppsCript, que recebe os dados e posteriormente trata os dados.  
-- **`index.py`**: Responsável pela navegação e redirecionamento de rotas, semelhante ao funcionamento de aplicações em PHP.
+- **`index.py`**: Responsável pela navegação e redirecionamento de rotas,além da captura dos dados do formulário, semelhante ao funcionamento de aplicações em PHP.
 
 Como o projeto não exigia uma camada de segurança robusta, **optei por realizar as validações de dados no front-end**, mantendo o back-end mais simples e escalável.
 
