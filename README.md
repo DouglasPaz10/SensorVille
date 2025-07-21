@@ -8,7 +8,7 @@ No texto a seguir, explico um pouco mais sobre o que desenvolvi neste código du
 
 ## **Preparando o Ambiente**
 
-A tecnologia principal utilizada para o desenvolvimento do projeto foi **Python**, com o auxílio da biblioteca **Flask**, rodando aplicações front-end com **HTML, CSS e JavaScript puro**.  
+A tecnologia principal utilizada para o desenvolvimento do projeto foi **Python**, com o auxílio da biblioteca **Flask** e **Requests**, rodando aplicações front-end com **HTML, CSS e JavaScript puro**.  
 
 Todas as dependências estão listadas no arquivo **`requirements.txt`**, sendo possível instalar todas executando:
 
@@ -25,7 +25,7 @@ As demais tecnologias utilizadas, como o **Google Apps Script**, não necessitam
 ## **Back-End**
 
 O back-end é composto principalmente por uma aplicação **Flask**, com dois arquivos principais:  
-- **`model.py`**: Responsável por enviar os dados ao Google Apps Script para inserção na planilha.  
+- **`model.py`**: Responsável por enviar uma requisição de método post para a aplicação AppsCript, que recebe os dados e posteriormente trata os dados.  
 - **`index.py`**: Responsável pela navegação e redirecionamento de rotas, semelhante ao funcionamento de aplicações em PHP.
 
 Como o projeto não exigia uma camada de segurança robusta, **optei por realizar as validações de dados no front-end**, mantendo o back-end mais simples e escalável.
