@@ -42,7 +42,7 @@ Como o projeto não exigia uma camada de segurança robusta, **optei por realiza
 
 ### **Google Apps Script**
 
-O **Google Apps Script** foi escolhido como solução para garantir maior escalabilidade, sem necessidade de autenticações complexas, além de possibilitar **integração nativa com o Google Drive e Google Sheets**, ferramentas utilizadas para armazenar e gerenciar as imagens dos pets cadastrados.
+O **Google Apps Script** foi escolhido como solução para garantir maior escalabilidade, sem necessidade de autenticações complexas, além de possibilitar **integração nativa com o Google Drive e Google Sheets**, ferramentas utilizadas para armazenar os daods e gerenciar as imagens dos pets cadastrados.
 
 Principais funções do Apps Script:
 - Atualizar automaticamente a planilha com os dados enviados pelo formulário.  
