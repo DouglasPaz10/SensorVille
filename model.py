@@ -24,6 +24,4 @@ def adicionar_dados(nome_pet, especie, raca, nome_dono, contato, email, foto=Non
         dados["image_b64"] = None
         dados["image_name"] = None
 
-    resp = requests.post(url, json=dados)
-    print("Status:", resp.status_code)
-    print("Resposta:", resp.text)
+    requests.post(url, json=dados)
