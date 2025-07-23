@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário: Informações do Animal e do Dono</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef1f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 550px;
+            box-sizing: border-box;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #dde1e6;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a4a4a;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cdd4da;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        input[type="file"] {
+            padding: 10px 0;
+            width: 100%;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Spinner quando o botão estiver em loading */
+        button.loading {
+            pointer-events: none; /* Desativa cliques */
+            background-color: #218838;
+        }
+
+        button.loading::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 3px solid #fff;
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        a#voltar {
+            display: inline-block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a#voltar:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Animal de Estimação</h1>
+        <form id="animalForm" method="post" action="/registro" enctype="multipart/form-data">
+            <h2>Dados do Animal</h2>
+            <div class="form-group">
+                <label for="nomeAnimal">Nome do Pet:</label>
+                <input pattern="[A-Za-zÀ-ÿ\s]+" type="text" id="nomeAnimal" name="nomeAnimal" required>
+            </div>
+
+            <div class="form-group">
+                <label for="especieAnimal">Espécie:</label>
+                <select id="especieAnimal" name="especieAnimal" required>
+                    <option value="">Selecione a Espécie</option>
+                    <option value="Cachorro">Cachorro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Pássaro">Pássaro</option>
+                    <option value="Peixe">Peixe</option>
+                    <option value="Roedor">Roedor</option>
+                    <option value="Réptil">Réptil</option>
+                    <option value="Anfíbio">Anfíbio</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="racaAnimal">Raça (se aplicável):</label>
+                <input pattern="[A-Za-zÀ-ÿ\s]+" type="text" id="racaAnimal" name="racaAnimal" placeholder="Ex: Labrador, Siamês, Sem Raça Definida">
+            </div>
+
+            <div class="form-group">
+                <label for="fotoAnimal">Foto do Pet:</label>
+                <input type="file" id="fotoAnimal" name="fotoAnimal" accept="image/*">
+            </div>
+
+            <h2>Dados do Dono</h2>
+            <div class="form-group">
+                <label for="nomeDono">Nome Completo do Dono:</label>
+                <input pattern="[A-Za-zÀ-ÿ\s]+" type="text" id="nomeDono" name="nomeDono" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contatoDono">Contato do Dono (Telefone):</label>
+                <input type="tel" id="contatoDono" name="contatoDono" placeholder="(DD) XXXXX-XXXX" 
+                       pattern="^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$" 
+                       title="Formato de telefone: (DD) NNNNN-NNNN ou DD NNNNNNNNN" required>
+                <small style="color: #666; display: block; margin-top: 5px;">Ex: (11) 98765-4321 ou 11987654321</small>
+            </div>
+
+            <div class="form-group">
+                <label for="emailDono">Email do Dono:</label>
+                <input type="email" id="emailDono" name="emailDono" placeholder="email@exemplo.com" required>
+            </div>
+
+            <!-- Botão que vai exibir o spinner durante o envio -->
+            <button type="submit" id="submitButton">Enviar Informações</button>
+        </form>
+
+        <a id="voltar" href="{{url_for('main_page')}}">voltar</a>
+    </div>
+
+    <script>
+        // Captura o formulário e o botão
+        const form = document.getElementById('animalForm');
+        const submitButton = document.getElementById('submitButton');
+
+        // Ao enviar o formulário, adiciona classe "loading" ao botão
+        form.addEventListener('submit', function () {
+            submitButton.classList.add('loading');
+            submitButton.innerText = "Enviando..."; // Altera o texto do botão
+        });
+
+    </script>
+</body>
+</html>
